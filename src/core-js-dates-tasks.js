@@ -31,8 +31,8 @@ function dateToTimestamp(date) {
  * Date(2023, 5, 1, 8, 20, 55) => '08:20:55'
  * Date(2015, 10, 20, 23, 15, 1) => '23:15:01'
  */
-function getTime(/* date */) {
-  throw new Error('Not implemented');
+function getTime(date) {
+  return date.toLocaleTimeString();
 }
 
 /**
@@ -70,8 +70,10 @@ function getDayName(date) {
  * Date('2024-02-13T00:00:00Z') => Date('2024-02-16T00:00:00Z')
  * Date('2024-02-16T00:00:00Z') => Date('2024-02-23T00:00:00Z')
  */
-function getNextFriday(/* date */) {
-  throw new Error('Not implemented');
+function getNextFriday(date) {
+  const offset = (7 + 5 - date.getDay()) % 7;
+  date.setDate(date.getDate() + (offset || 7));
+  return date;
 }
 
 /**
