@@ -160,7 +160,14 @@ function formatDate(date) {
  * 1, 2024 => 8
  */
 function getCountWeekendsInMonth(month, year) {
-  return new Date(year, month).getDay() === 0 ? 1 : 0;
+  const weekendsId = [0, 6];
+  let count = 0;
+  for (let i = 1; i <= getCountDaysInMonth(month, year); i += 1) {
+    if (weekendsId.includes(new Date(year, month - 1, i).getDay())) {
+      count += 1;
+    }
+  }
+  return count;
 }
 
 /**
